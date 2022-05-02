@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "github.com/mongche/gupload/messages";
+
+package messages;
+
+service GuploadService {
+    rpc Upload(stream Chunk) returns (UploadStatus) {}
+}
+
+message Chunk {
+    bytes content = 1;
+}
+
+enum UploadStatusCode {
+    UNKNOWN = 0;
+    OK = 1;
+    FAILED = 2;
+}
+
+message UploadStatus {
+    string message = 1;
+    UploadStatusCode code = 2;
+}
