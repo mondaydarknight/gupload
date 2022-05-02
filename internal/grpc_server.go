@@ -71,8 +71,6 @@ func NewGrpcServer(config config.GrpcServerConfig) (s GrpcServer, err error) {
 		return
 	}
 
-	log.Printf("Server listening at %v", listener.Addr())
-
 	if config.Cert != "" && config.Key != "" {
 		grpcCreds, err = credentials.NewServerTLSFromFile(config.Cert, config.Key)
 
